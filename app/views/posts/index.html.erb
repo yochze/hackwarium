@@ -1,0 +1,35 @@
+<div id="posts">
+
+  <ul>
+
+<% @posts.each do |post| %>
+<li>
+<div class="title">
+        <%= link_to post.title, post %><br>
+        <span class="intro">
+          <% if post.content.size <= 40 %>
+            <%= strip_tags post.content %>
+            <% else %>
+          <%= strip_tags post.content.slice(0..40) %> ...
+            <% end %>
+        </span>
+
+      </div>
+      <div class="last_active">
+        <%= post.user.name %> <br>
+        <%= post.updated_at %>
+      </div>      
+      <div class="author">
+        <%= link_to post.user.name, post.user %>
+      </div>
+      <div class="stats">
+        צפיות: <%= post.impressions.size %> <br>
+        תגובות: <%= post.comments.size %>
+      </div>    
+<% end %>
+</li>
+</ul>
+</div>
+
+
+<%= render 'leftside' %>

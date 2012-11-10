@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<div id="viewpost">
+<h3><%= @post.title %></h3> <br>
+<span class="writtenby">נכתב ע"י
+<%= link_to @post.user.name, @post.user %>, בתאריך: <%= @post.created_at %>
+</span>
+<p class="content">
+  <%= @post.content.html_safe %>
+</p>
+
+
+<% if user_signed_in? && object_creator_or_admin(@post) %>
+	<span class="control">
+		<%= link_to 'ערוך', edit_post_path(@post) %>
+	</span>
+<% end %>
+</div>
+
+<%= render 'leftside_post' %>
+
+<%= render 'comments' %>
+
+<%= link_to 'Back', posts_path %>

@@ -1,0 +1,20 @@
+<p class="notice"><%= notice %></p>
+
+<h2>עדכן <%= @user.name %></h2>
+
+<%= form_for(@user, :html => {:id => 'editprofile'}, :url => settings_account_path) do |f| %>
+  
+<div><%= f.label :name %><br />
+  <%= f.text_field :name, :class => 'textbox' %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :class => 'textbox' %></div>
+
+  <div><%= f.label :title %><br />
+  <%= f.text_field :title, :class => 'textbox' %></div>
+
+
+  <div><%= f.submit "עדכן", :class => 'btn-send' %></div>
+<% end %>
+
+<%= link_to "Back", :back %>

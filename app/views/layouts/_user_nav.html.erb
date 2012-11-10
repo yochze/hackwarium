@@ -1,0 +1,15 @@
+<div id="side_menu">
+	<div class="menutop">
+	<% if !user_signed_in? %>
+    <%= link_to "התחבר, מה אתה עושה פה?", user_omniauth_authorize_path(:facebook) %>
+  <% else %>
+  <img src="<%= current_user.profile_pic %>" width="30" height="30" />
+     <%= current_user.name %> <br />( 
+     	<%= link_to 'התנתק', '/sign_out' %>
+
+      / 
+      <%= link_to 'עדכן פרטים', '/settings/account' %>
+       )
+<% end %>
+</div>
+</div>

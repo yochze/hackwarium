@@ -1,0 +1,31 @@
+<div id="comments-wrapper">
+	<h2>תגובות</h2>
+<% @post.comments.each do |comment| %>
+	<div id="comment">
+		<p><%= comment.content %></p>
+		<br><div class="comment-author">
+			נכתב ע''י 
+			<%= link_to comment.user.name, comment.user %>
+			 בתאריך <%= comment.created_at %>
+		</div>
+
+		<div class="rate-comment">    
+			<span class="positive">
+				12
+			</span>
+
+			<span class="negative">
+				14
+			</span>
+		</div>
+	</div>
+	<% end %>
+
+<div id="comment" style="border-top: solid 1px #eee;"> 
+	<%= form_for([@post, @post.comments.build]) do |f| %>
+	    <%= f.text_area :content, :class => "textareacomment" %>
+	    <br>
+	    <%= f.submit :value => 'שלח', :class => 'btn-send' %>
+	<% end %>
+</div>
+<br><br>
