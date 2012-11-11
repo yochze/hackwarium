@@ -1,7 +1,14 @@
 Hackwarium::Application.routes.draw do
- resources :posts do 
-    resources :comments
+ resources :posts do
+  resources :comments do
+    member do
+      post :vote_up
+      post :vote_down
+    end
   end
+end
+
+
 
   resources :users 
   # The priority is based upon order of creation:

@@ -2,15 +2,16 @@
 
 <h2>עדכן <%= @user.name %></h2>
 
+<div id="form_user_update">
 <%= form_for(@user, :html => {:id => 'editprofile'}, :url => settings_account_path) do |f| %>
   
-<div><%= f.label :name %><br />
+<div><%= f.label 'שם, כינוי' %>
   <%= f.text_field :name, :class => 'textbox' %></div>
 
-  <div><%= f.label :email %><br />
+  <div><%= f.label 'דוא"ל' %>
   <%= f.email_field :email, :class => 'textbox' %></div>
 
-  <div><%= f.label :title %><br />
+  <div><%= f.label 'כמה מילים סתם' %>
   <%= f.text_field :title, :class => 'textbox' %></div>
 
 
@@ -18,3 +19,4 @@
 <% end %>
 
 <%= link_to "Back", :back %>
+</div>

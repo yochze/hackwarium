@@ -116,29 +116,42 @@ h3 {
 	float: right; }
 
 #comment .rate-comment {
-	background-image: url(/assets/rating.png);
+	background-image: url(/assets/rating-big.png);
 	background-repeat: no-repeat;
-	height: 22px;
-	width: 47px;
+	height: 30px;
+	width: 55px;
 	float: left;
 	margin-right: 20px;
 	margin-top: -10px;
 }
 
+.rater-positive {
+	width: 15px;;
+	text-align: center;
+	float: left;
+	margin-top: 5px;
+	margin-left: 6.5px;
+}
+
+.rater-negative {
+	width: 15px;
+	text-align: center;
+	float: right;
+	padding-top: 5px;
+	padding-right:6px;
+	
+}
+
+
 .rate-comment .positive {
 	color: green;
 	font: 8pt arial;
-	float: left;
-	padding: 5px;
 }
 
 .rate-comment .negative {
 	color: red;
-	font: 8pt arial;
-	float: right;
-	padding-top: 5px;
-	padding-right: 7px;
-}
+	font: 8pt arial; }
+
 #comments-wrapper .comment-author a {
 	border-bottom: solid 1px #acc1c2;
 	color: #222222;

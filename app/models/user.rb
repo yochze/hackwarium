@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   # Omniauth	
   attr_accessible :provider, :uid, :name, :oauth_token, :oauth_expires_at
 
+  # Ranking
+  attr_accessible :negative_rank, :positive_rank
+
   # Likes, Groups
   serialize :likes
   serialize :groups
@@ -26,8 +29,9 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :impressions
   
+  acts_as_voter
 
- 
+
 # OAuth
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -65,6 +69,15 @@ class User < ActiveRecord::Base
   def get_likes_and_groups
     self.likes = self.facebook.get_connection("me", "likes")
     self.groups = self.facebook.get_connection("me", "groups")
+  end
+
+
+  def rank
+      if (self.positive_rank.nil? && self.negative_rank.nil?)
+        0
+      else
+        (self.negative_rank * -1) + self.positive_rank
+      end
   end
 
 end

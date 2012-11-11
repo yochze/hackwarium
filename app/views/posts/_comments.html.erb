@@ -5,18 +5,18 @@
 		<p><%= comment.content %></p>
 		<br><div class="comment-author">
 			נכתב ע''י 
-			<%= link_to comment.user.name, comment.user %>
-			 בתאריך <%= comment.created_at %>
+			<%= link_to comment.user.name, comment.user, :class => 'tooltip', :title => tooltip_user(comment.user) %>
+			דירוג: <%= user_rank(comment.user) %>
+			 בתאריך:  <%= comment.created_at %>
 		</div>
 
 		<div class="rate-comment">    
-			<span class="positive">
-				12
-			</span>
+			<div class="rater-positive">
+				<%= link_to comment.votes_for, vote_up_post_comment_path(comment), :method => :post, :class => 'positive' %>
+			</div>
 
-			<span class="negative">
-				14
-			</span>
+			<div class="rater-negative"><%= link_to comment.votes_against, vote_down_post_comment_path(comment), :method => :post, :class => 'negative' %>
+			</div>
 		</div>
 	</div>
 	<% end %>

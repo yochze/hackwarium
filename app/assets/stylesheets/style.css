@@ -143,3 +143,17 @@ h4 {
 .random-user img {
 	border: solid 2px #eee;
 }
+
+#form_user_update {
+	width: 500px;
+	float: right; }
+
+#form_user_update div {
+	float: left;
+	display: block;
+}
+#form_user_update label {
+	float: right;
+	display: block;
+}
+

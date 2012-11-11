@@ -1,10 +1,13 @@
+<div style="float: right; width: 700;">
+  <%= link_to 'פוסט חדש', new_post_path %>
+</div> <BR><br>
 <div id="posts">
 
   <ul>
 
 <% @posts.each do |post| %>
 <li>
-<div class="title">
+<div class="title" >
         <%= link_to post.title, post %><br>
         <span class="intro">
           <% if post.content.size <= 40 %>
@@ -20,7 +23,7 @@
         <%= post.updated_at %>
       </div>      
       <div class="author">
-        <%= link_to post.user.name, post.user %>
+        <%= link_to post.user.name, post.user, :class => 'tooltip', :title => tooltip_user(post.user) %>
       </div>
       <div class="stats">
         צפיות: <%= post.impressions.size %> <br>
