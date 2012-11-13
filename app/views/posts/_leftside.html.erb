@@ -1,6 +1,6 @@
 <div class="leftboxes">
 <h4>הידעת?</h4>
-	<%= did_you_know %>
+	<%= @random_fact.content %>
 </div>
 
 <div class="leftboxes">
@@ -8,7 +8,10 @@
 	<div class="random-user">
 	<%= image_tag(@random_user.profile_pic) %> <br>
 	<%= link_to @random_user.name, @random_user %><br>
-	<span class="title"><i><%= @random_user.title %></i></span>
+	<span class="title"><i><%= @random_user.title %></i>
+		<br>ניקוד: <%= user_rank(@random_user) %>
+	</span><br>
+	
 
 	</div>
 </div>

@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
-  # GET /posts
-  # GET /posts.json
+  helper :all
+    
+  before_filter :authenticate, :except => [:show, :index]
+  
   def index
-    @posts = Post.all
+    @random_fact = Fact.random_fact
+    @posts = Post.order("sticky DESC, updated_at DESC")
 
     @random_user = User.all.sample
 
@@ -16,7 +19,8 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-    @post.impressions.create(ip_address: request.remote_ip, useragent: request.user_agent, referrer: request.referer, user_id: current_user.id )
+    
+    add_impression(current_user) # Helper method
 
     respond_to do |format|
       format.html # show.html.erb
@@ -39,7 +43,22 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     if !(@post.user == current_user || current_user.admin?)
-      redirect_to '/'
+      redirect_to posts_path
+    end
+  end
+
+  def mark_sticky
+    @post = Post.find(params[:id])
+    if !current_user.admin?
+      redirect_to @post
+    else
+      if @post.sticky?
+        @post.sticky = false
+      else
+        @post.sticky = true
+      end
+      @post.save!
+      redirect_to @post
     end
   end
 
@@ -86,4 +105,10 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+
+  # def search 
+  #   @posts = Post.search(params[:search])
+  # end
+
 end

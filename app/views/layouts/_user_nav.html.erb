@@ -4,12 +4,16 @@
     <%= link_to "התחבר, מה אתה עושה פה?", user_omniauth_authorize_path(:facebook) %>
   <% else %>
   <img src="<%= current_user.profile_pic %>" width="30" height="30" />
-     <%= current_user.name %> <br />( 
+     <%= current_user.name %> <%= user_rank(current_user) %> <br />( 
      	<%= link_to 'התנתק', '/sign_out' %>
 
       / 
       <%= link_to 'עדכן פרטים', '/settings/account' %>
        )
+
 <% end %>
+
+
+
 </div>
 </div>

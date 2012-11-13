@@ -1,3 +1,7 @@
+#!/bin/env ruby
+# encoding: utf-8
+
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -28,8 +32,14 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :impressions
+  has_many :facts
   
   acts_as_voter
+
+  # Validations
+  validates :name, :presence => true, :length => { :minimum => 3, :maximum => 100 }
+  validates :email, :presence => true
+  validates :title, :length => { :maximum => 100 }
 
 
 # OAuth

@@ -142,6 +142,17 @@ h3 {
 	
 }
 
+.edit_link {
+	float: left;
+	margin-left: 0;
+	color: #c4c4c4;
+	opacity: 0.5;
+	margin-right: 4px;
+}
+
+.edit_link:hover {
+	opacity: 0.7
+}
 
 .rate-comment .positive {
 	color: green;

@@ -1,5 +1,5 @@
 <div style="float: right; width: 700;">
-  <%= link_to 'פוסט חדש', new_post_path %>
+  <%= new_post %>
 </div> <BR><br>
 <div id="posts">
 
@@ -8,6 +8,7 @@
 <% @posts.each do |post| %>
 <li>
 <div class="title" >
+  <%= is_sticky(post) %>
         <%= link_to post.title, post %><br>
         <span class="intro">
           <% if post.content.size <= 40 %>

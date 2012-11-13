@@ -157,3 +157,28 @@ h4 {
 	display: block;
 }
 
+.search-style {
+	float: left;
+	margin-top: -10px;
+}
+
+.search {
+	width: 150px;
+	height: 23px;
+	background-color: #232323;
+	color: #eee;
+	border: solid 1px gray;
+	outline: none;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.search-btn {
+	background-image: url(/assets/search.png);
+	width: 28px;
+	height: 26px;
+	border: solid 1px gray;
+	padding: 5px;
+	margin-right: 3px;
+
+}

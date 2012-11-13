@@ -1,6 +1,19 @@
 <p id="notice"><%= notice %></p>
+<div style="float: right; width: 700;">
+  <%= link_to 'פורומים', posts_path %>  >> <%= @post.title %>
+</div> <BR><br>
 
 <div id="viewpost">
+  <% if user_signed_in? && object_creator_or_admin(@post) %>
+    <span class="control">
+      <%= link_to image_tag("/assets/edit.png"), edit_post_path(@post), :class => 'edit_link' %>&nbsp;
+      <% if current_user.admin? %>
+        <%= link_to image_tag("/assets/delete.png"), @post, :method => :delete, :class => 'edit_link', :confirm => 'האם אתה בטוח?' %>
+        <%= link_to image_tag("/assets/badge.png"), mark_sticky_post_path(@post), :class => 'edit_link', :method => :post %>
+      <% end %>
+    </span>
+  <% end %>
+
 <h3><%= @post.title %></h3> <br>
 <span class="writtenby">נכתב ע"י
 <%= link_to @post.user.name, @post.user, :class => 'tooltip', :title => tooltip_user(@post.user) %>, בתאריך: <%= @post.created_at %>
@@ -8,17 +21,23 @@
 <p class="content">
   <%= @post.content.html_safe %>
 </p>
-
-
-<% if user_signed_in? && object_creator_or_admin(@post) %>
-	<span class="control">
-		<%= link_to 'ערוך', edit_post_path(@post) %>
-	</span>
-<% end %>
 </div>
 
 <%= render 'leftside_post' %>
 
 <%= render 'comments' %>
 
-<%= link_to 'Back', posts_path %>
+<% content_for :head do %>
+
+  <%= tag :meta, property: "fb:app_id", content: "167893606688878" %>
+  <%= tag :meta, property: "og:site_name", content: "האקווריום - ארדואינו ישראל" %>
+  <%= tag :meta, property: "og:type", content: "hackwarium:post" %>
+  <%= tag :meta, property: "og:title", content: @post.title %>
+  <%= tag :meta, property: "og:url", content: post_path(@post) %>
+
+
+<% end %>
+
+<% title ' - ' + @post.title %>
+
+

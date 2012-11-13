@@ -1,5 +1,8 @@
 Hackwarium::Application.routes.draw do
  resources :posts do
+    member do
+      post :mark_sticky
+    end
   resources :comments do
     member do
       post :vote_up
@@ -7,7 +10,12 @@ Hackwarium::Application.routes.draw do
     end
   end
 end
-
+  
+  resources :facts
+  
+  # Search
+  match 'search' => 'posts#search'
+  
 
 
   resources :users 

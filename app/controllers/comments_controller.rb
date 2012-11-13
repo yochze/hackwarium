@@ -7,7 +7,10 @@ class CommentsController < ApplicationController
 
 	respond_to do |format|	    
 	    if @comment.save
-	    	format.js  # Ajax
+        @post.updated_at = @comment.created_at
+        @post.save!
+	    	
+        format.js  # Ajax
 	    	format.html { redirect_to @post }
 	    else
 	    	format.html { redirect_to @post }
@@ -18,10 +21,15 @@ class CommentsController < ApplicationController
   def vote_up
     begin
       @post = Post.find(params[:id])
-      current_user.vote_for(@comment = @post.comments.find(params[:post_id]))
-      current_user.positive_rank += 1
-      current_user.save
-      redirect_to @post
+      @comment = @post.comments.find(params[:post_id])
+      if user_signed_in? && current_user != @comment.user
+        current_user.vote_for(@comment)
+        current_user.positive_rank += 1
+        current_user.save
+        redirect_to @post
+      else
+        redirect_to @post
+      end
     rescue ActiveRecord::RecordInvalid
       redirect_to @post
     end
@@ -30,10 +38,15 @@ class CommentsController < ApplicationController
   def vote_down
     begin
       @post = Post.find(params[:id])
-      current_user.vote_against(@comment = @post.comments.find(params[:post_id]))
-      current_user.negative_rank += 1
-      current_user.save
-      redirect_to @post
+      @comment = @post.comments.find(params[:post_id])
+      if user_signed_in? && current_user != @comment.user
+        current_user.vote_against(@comment)
+        current_user.negative_rank += 1
+        current_user.save
+        redirect_to @post
+      else
+        redirect_to @post
+      end
     rescue ActiveRecord::RecordInvalid
       redirect_to @post
     end

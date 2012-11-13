@@ -11,12 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111154037) do
+ActiveRecord::Schema.define(:version => 20121113174644) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
     t.text     "content"
     t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "facts", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.text     "source"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -35,13 +43,14 @@ ActiveRecord::Schema.define(:version => 20121111154037) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "sticky",     :default => false
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -50,11 +59,11 @@ ActiveRecord::Schema.define(:version => 20121111154037) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "name"
     t.string   "birthday"
-    t.string   "title"
+    t.text     "title",                  :default => ""
     t.string   "profile_pic"
     t.text     "likes"
     t.text     "groups"
@@ -62,8 +71,9 @@ ActiveRecord::Schema.define(:version => 20121111154037) do
     t.string   "uid"
     t.string   "oauth_token"
     t.string   "oauth_expires_at"
-    t.integer  "positive_rank"
-    t.integer  "negative_rank"
+    t.integer  "positive_rank",          :default => 0
+    t.integer  "negative_rank",          :default => 0
+    t.boolean  "admin",                  :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

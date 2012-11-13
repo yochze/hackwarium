@@ -8,8 +8,10 @@ module ApplicationHelper
 	end
 
 	def user_rank(user)
-		if user.rank < 0 
+		if user.rank < 0
 			("<div style=\'color: red; font-weight: bold;\'>" + user.rank.to_s + "</div>").html_safe
+		elsif user.rank.blank?
+			("<div style=\'color: green; font-weight: bold; display: inline;\'>" + '0' + "</div>").html_safe
 		else
 			("<div style=\'color: green; font-weight: bold; display: inline;\'>" + user.rank.to_s + "</div>").html_safe
 		end
@@ -22,7 +24,7 @@ module ApplicationHelper
 		html << user.name
 		html << "<br />"
 		html << "<span class=\'tooltip_user_quote\'>"
-		html << user.title
+		html << user.title if !user.title.blank?
 		html << "</span>"
 		html << "<br />"
 		html << "ניקוד: "
@@ -32,11 +34,22 @@ module ApplicationHelper
 		return html.html_safe
 	end
 
-
-	def did_you_know
-		html = []
-		html << "חוק אוהם התגלה ב־1826 על ידי גאורג אוהם, והוא מציג קשר פשוט ועם זאת חשוב בין המתח, הזרם וההתנגדות החשמלית בחומרים מסוימים. חוק אוהם הוא אחד החוקים הבסיסים ביותר בתורת המעגלים החשמליים."
-		html << "asdf"
-		return html.sample
+  def new_post
+	if user_signed_in?
+    	link_to 'פוסט חדש', new_post_path 
 	end
+  end
+
+  def title(page_title)
+    content_for(:title){ page_title }
+    page_title
+  end
+
+  def admin_panel_post(post)
+  	if user_signed_in? && current_user.admin?
+  		 link_to 'מחק', post, :method => :delete, :class => 'edit_link', :confirm => 'האם אתה בטוח?'
+		 link_to 'סטיקי', post, :class => 'edit_link'
+  	end
+  end
+
 end

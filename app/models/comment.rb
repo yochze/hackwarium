@@ -6,4 +6,6 @@ class Comment < ActiveRecord::Base
 
   acts_as_voteable
   
+  # Validations
+  validates :content, :presence => true, :length => { :minimum => 3 }
 end
