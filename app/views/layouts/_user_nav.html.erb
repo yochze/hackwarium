@@ -3,7 +3,7 @@
 	<% if !user_signed_in? %>
     <%= link_to "התחבר, מה אתה עושה פה?", user_omniauth_authorize_path(:facebook) %>
   <% else %>
-  <img src="<%= current_user.profile_pic %>" width="30" height="30" />
+  <img src="<%= current_user.profile_pic %>" class="menutop-img" width="30" height="30" />
      <%= current_user.name %> <%= user_rank(current_user) %> <br />( 
      	<%= link_to 'התנתק', '/sign_out' %>
 
@@ -13,7 +13,9 @@
 
 <% end %>
 
-
+<div class="hcrafted">
+  <%= link_to image_tag('/assets/handcraftedbyhackware.png'), 'http://hackware.me', :class => 'hcrafted-logo' %>
+</div>
 
 </div>
 </div>

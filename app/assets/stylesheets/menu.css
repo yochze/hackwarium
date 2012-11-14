@@ -38,11 +38,22 @@
 	border-bottom: solid 1px #73b2b5;
 }
 
-#side_menu .menutop img {
+#side_menu .menutop-img {
 	width: 30px;
 	height: 30px;
 	border: solid 2px #eee;
 	float: right;
 	display: inline;
 	margin-left: 8px;
+}
+
+.hcrafted {
+	color: #eee;
+	outline: none;
+	float: left;
+	margin-top: -10px;
+}
+.hcrafted-logo {
+	width: 99px;
+	height: 16px;
 }

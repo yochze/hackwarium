@@ -162,17 +162,15 @@ h4 {
 	margin-top: -10px;
 }
 
-.search {
-	width: 150px;
-	height: 23px;
-	background-color: #232323;
+.hcrafted {
 	color: #eee;
-	border: solid 1px gray;
 	outline: none;
-	padding-right: 5px;
-	padding-left: 5px;
+	float: left;
 }
-
+.hcrafted-logo {
+	width: 99px;
+	height: 16px;
+}
 .search-btn {
 	background-image: url(/assets/search.png);
 	width: 28px;
