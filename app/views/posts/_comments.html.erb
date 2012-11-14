@@ -6,7 +6,10 @@
 		<br><div class="comment-author">
 			נכתב ע''י 
 			<%= link_to comment.user.name, comment.user, :class => 'tooltip', :title => tooltip_user(comment.user) %>
-			 בתאריך:  <%= comment.created_at %>
+			 בתאריך:  <%= l(comment.created_at, :format => :shorter) %>
+			 <% if object_creator_or_admin(comment) %>
+			 	<%= link_to 'מחק', post_comment_path(comment), :method => :delete, :confim => 'האם אתה בטוח?' %>
+			 <% end %>
 		</div>
 
 		<div class="rate-comment">    

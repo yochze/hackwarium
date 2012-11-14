@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     
-    add_impression(current_user) # Helper method
+    add_impression(current_user) # AppController method
 
     respond_to do |format|
       format.html # show.html.erb
@@ -106,6 +106,15 @@ class PostsController < ApplicationController
     end
   end
   
+  def vote_up
+    @post = Post.find(params[:id])
+    vote_up_post(@post)
+  end
+
+  def vote_down
+    @post = Post.find(params[:id])
+    vote_down_post(@post)
+  end
 
   # def search 
   #   @posts = Post.search(params[:search])

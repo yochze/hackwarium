@@ -9,6 +9,7 @@ gem 'devise' # Devise is a model for user authentication (signup etc)
 gem 'omniauth-facebook' # Authentication with Facebook
 gem 'koala' # To deal with Facebook Graph API
 gem 'thumbs_up' # Voting system
+gem 'rails-i18n'
 
 gem 'pg'
 

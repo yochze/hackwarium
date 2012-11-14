@@ -14,13 +14,21 @@
     </span>
   <% end %>
 
-<h3><%= @post.title %></h3> <br>
+<h3><%= @post.title %></h3> <br><BR>
 <span class="writtenby">נכתב ע"י
-<%= link_to @post.user.name, @post.user, :class => 'tooltip', :title => tooltip_user(@post.user) %>, בתאריך: <%= @post.created_at %>
+<%= link_to @post.user.name, @post.user, :class => 'tooltip', :title => tooltip_user(@post.user) %>, בתאריך: <%= l(@post.created_at, :format => :shorter) %>
 </span>
 <p class="content">
   <%= @post.content.html_safe %>
 </p>
+<div class="rate-post">    
+      <div class="rater-positive">
+        <%= link_to @post.votes_for, vote_up_post_path(@post), :method => :post, :class => 'positive' %>
+      </div>
+
+      <div class="rater-negative"><%= link_to -1*@post.votes_against, vote_down_post_path(@post), :method => :post, :class => 'negative' %>
+      </div>
+    </div>
 </div>
 
 <%= render 'leftside_post' %>

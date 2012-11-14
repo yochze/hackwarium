@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
   
   belongs_to :user
 
+  acts_as_voteable
   # Validations
 
   validates :content, :presence => true, :length => { :minimum => 10 }

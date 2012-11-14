@@ -2,8 +2,10 @@
 
 module ApplicationHelper
 	def object_creator_or_admin(object)
-		if current_user == object.user || current_user.admin?
-			true
+		if user_signed_in?
+			if current_user == object.user || current_user.admin?
+				true
+			end
 		end
 	end
 
@@ -34,22 +36,15 @@ module ApplicationHelper
 		return html.html_safe
 	end
 
-  def new_post
-	if user_signed_in?
-    	link_to 'פוסט חדש', new_post_path 
-	end
-  end
-
-  def title(page_title)
-    content_for(:title){ page_title }
-    page_title
-  end
-
-  def admin_panel_post(post)
-  	if user_signed_in? && current_user.admin?
-  		 link_to 'מחק', post, :method => :delete, :class => 'edit_link', :confirm => 'האם אתה בטוח?'
-		 link_to 'סטיקי', post, :class => 'edit_link'
+  	def new_post
+		if user_signed_in?
+    		link_to 'פוסט חדש', new_post_path 
+		end
   	end
-  end
 
+  	def title(page_title)
+    	content_for(:title){ page_title }
+    	page_title
+  	end
+  	
 end

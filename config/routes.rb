@@ -2,6 +2,8 @@ Hackwarium::Application.routes.draw do
  resources :posts do
     member do
       post :mark_sticky
+      post :vote_up
+      post :vote_down
     end
   resources :comments do
     member do

@@ -18,14 +18,26 @@ class CommentsController < ApplicationController
 	 end
   end
 
+
+def destroy
+    @post = Post.find(params[:id])
+    @comment = @post.comments.find(params[:post_id])
+    @comment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to @post }
+      format.json { head :no_content }
+    end
+end
+
   def vote_up
     begin
       @post = Post.find(params[:id])
       @comment = @post.comments.find(params[:post_id])
       if user_signed_in? && current_user != @comment.user
         current_user.vote_for(@comment)
-        current_user.positive_rank += 1
-        current_user.save
+        @comment.user.positive_rank += 1
+        @comment.user.save
         redirect_to @post
       else
         redirect_to @post
@@ -41,8 +53,8 @@ class CommentsController < ApplicationController
       @comment = @post.comments.find(params[:post_id])
       if user_signed_in? && current_user != @comment.user
         current_user.vote_against(@comment)
-        current_user.negative_rank += 1
-        current_user.save
+        @comment.user.negative_rank += 1
+        @comment.user.save
         redirect_to @post
       else
         redirect_to @post
@@ -51,5 +63,6 @@ class CommentsController < ApplicationController
       redirect_to @post
     end
   end
+
 
 end
