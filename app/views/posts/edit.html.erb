@@ -1,6 +1,9 @@
-<h1>ערוך פוסט</h1>
+<div style="float: right; width: 700;">
+	<%= link_to 'האקווריום', posts_path %>  >> עריכת פוסט
+</div> <BR><br>
 
+<div id="viewpost" style="width: 650px;">
 <%= render 'form' %>
+</div>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<%= render 'leftside_new_post' %>

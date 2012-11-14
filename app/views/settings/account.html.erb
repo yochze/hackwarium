@@ -1,22 +1,22 @@
+<div style="float: right; width: 700;">
+	<%= link_to 'האקווריום', posts_path %>  >> <%= @user.name %> >> עדכן פרטים
+</div> <BR><br>
+<br>
 <p class="notice"><%= notice %></p>
-
-<h2>עדכן <%= @user.name %></h2>
 
 <div id="form_user_update">
 <%= form_for(@user, :html => {:id => 'editprofile'}, :url => settings_account_path) do |f| %>
   
-<div><%= f.label 'שם, כינוי' %>
-  <%= f.text_field :name, :class => 'textbox' %></div>
+  	<%= f.label 'שם / כינוי' %>
+    <%= f.text_field :name, :class => 'textbox' %>
 
-  <div><%= f.label 'דוא"ל' %>
-  <%= f.email_field :email, :class => 'textbox' %></div>
+    <%= f.label 'כתובת דוא"ל' %>
+    <%= f.email_field :email, :class => 'textbox' %>
 
-  <div><%= f.label 'כמה מילים סתם' %>
-  <%= f.text_field :title, :class => 'textbox' %></div>
+  	<%= f.label 'כמה מילים עליי' %>
+    <%= f.text_field :title, :class => 'textbox' %>
+<p style="float: left;"> 
+<%= f.submit "עדכן", :class => 'btn-send' %></p>
+</div> <br>
 
-
-  <div><%= f.submit "עדכן", :class => 'btn-send' %></div>
 <% end %>
-
-<%= link_to "Back", :back %>
-</div>

@@ -146,15 +146,20 @@ h4 {
 
 #form_user_update {
 	width: 500px;
-	float: right; }
+	margin-left: auto;
+	margin-right: auto;}
 
-#form_user_update div {
-	float: left;
-	display: block;
+#form_user_update input {
+	float: right;
 }
 #form_user_update label {
-	float: right;
-	display: block;
+	display:block;
+	font-weight:bold;
+	text-align:right;
+	width:120px;
+	float:right;
+	margin-left: 30px;
+	color: #03787f;
 }
 
 .search-style {
