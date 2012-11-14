@@ -6,12 +6,13 @@
 <div class="leftboxes">
 <h4>משתמש ברגע</h4>
 	<div class="random-user">
+	<% if !@random_user.nil? %>
 	<%= image_tag(@random_user.profile_pic) %> <br>
 	<%= link_to @random_user.name, @random_user %><br>
 	<span class="title"><i><%= @random_user.title %></i>
 		<br>ניקוד: <%= user_rank(@random_user) %>
 	</span><br>
-	
+	<% end %>
 
 	</div>
 </div>
