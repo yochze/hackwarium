@@ -7,4 +7,14 @@ class SettingsController < ApplicationController
       redirect_to current_user
     end
   end
+
+
+  def splash
+  	if user_signed_in?
+  		redirect_to posts_url
+  	end
+  	
+  end
+
+
 end
