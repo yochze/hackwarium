@@ -1,6 +1,6 @@
 <div class="leftboxes">
 <h4>הידעת?</h4>
-	<%= @random_fact.content %>
+	<%= @random_fact.content if !@random_fact.nil? %>
 </div>
 
 <div class="leftboxes">
