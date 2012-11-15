@@ -11,7 +11,7 @@ module ApplicationHelper
 
 	def user_rank(user)
 		if user.rank < 0
-			("<div style=\'color: red; font-weight: bold;\'>" + user.rank.to_s + "</div>").html_safe
+			("<div style=\'color: red; font-weight: bold;  display: inline;\'>" + user.rank.to_s + "</div>").html_safe
 		elsif user.rank.blank?
 			("<div style=\'color: green; font-weight: bold; display: inline;\'>" + '0' + "</div>").html_safe
 		else
