@@ -1,0 +1,10 @@
+	<div id="comment" style="border-top: solid 1px #eee;"> 
+		<% if user_signed_in? %>
+		<%= form_for([@post, @post.comments.build]) do |f| %>
+		    <%= f.text_area :content, :class => "textareacomment" %>
+		    <%= f.submit :value => 'שלח', :class => 'btn-send' %>
+		<% end %>
+		<% else %>
+		<h2>חייבים להרשם בכדי להגיב</h2>
+		<% end %>
+	</div>

@@ -32,18 +32,18 @@
 </div>
 
 <%= render 'leftside_post' %>
-
-<%= render 'comments' %>
-
+<div id="comments-wrapper">
+  <h2>תגובות</h2>
+    <%= render :partial => 'comments/comment', :collection => @post.comments %>
+    <br><br>
+    <%= render :partial => 'comments/comment_form', :object => @post %>
+</div>
 <% content_for :head do %>
-
   <%= tag :meta, property: "fb:app_id", content: "167893606688878" %>
   <%= tag :meta, property: "og:site_name", content: "האקווריום - ארדואינו ישראל" %>
   <%= tag :meta, property: "og:type", content: "hackwarium:post" %>
   <%= tag :meta, property: "og:title", content: @post.title %>
   <%= tag :meta, property: "og:url", content: post_path(@post) %>
-
-
 <% end %>
 
 <% title ' - ' + @post.title %>

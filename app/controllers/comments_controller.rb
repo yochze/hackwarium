@@ -8,8 +8,7 @@ class CommentsController < ApplicationController
 	respond_to do |format|	    
 	    if @comment.save
         @post.updated_at = @comment.created_at
-        @post.save!
-	    	
+        @post.save! 	
         format.js  # Ajax
 	    	format.html { redirect_to @post }
 	    else
