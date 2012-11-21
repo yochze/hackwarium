@@ -4,13 +4,15 @@ class PostsController < ApplicationController
   before_filter :authenticate, :except => [:show, :index]
   
   def index
-    @random_fact = Fact.random_fact
-    @posts = Post.order("sticky DESC, updated_at DESC")
+    
+    @posts = Post.order("sticky DESC, updated_at DESC").page(params[:page]).per_page(10)
 
     @random_user = User.all.sample
-
+    @random_fact = Fact.random_fact
+    
     respond_to do |format|
       format.html # index.html.erb
+      format.js
       format.json { render json: @posts }
     end
   end
