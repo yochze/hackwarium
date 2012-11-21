@@ -1,4 +1,7 @@
 class SettingsController < ApplicationController
+
+  before_filter :authenticate_admin, :only => [:admin_panel]
+
 	def account
     @user = current_user
     if request.put?
@@ -13,7 +16,13 @@ class SettingsController < ApplicationController
   	if user_signed_in?
   		redirect_to posts_url
   	end
-  	
+  end
+
+  def admin_panel
+    @impressions = Impression.all
+    @users = User.all
+    @posts = Post.all
+    @comments = Comment.all
   end
 
 

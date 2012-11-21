@@ -34,6 +34,10 @@ end
 get "splash" => "settings#splash"
 get "settings/account" => "settings#account"
 put "settings/account" => "settings#account"
+
+
+# Admin View
+get "admin" => "settings#admin_panel"
   
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
