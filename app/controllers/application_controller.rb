@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  def is_admin
+  def is_admin # For user
     if !(user_signed_in? && user.admin?)
       redirect_to posts_path
     end
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authenticate_admin
+  def authenticate_admin # For current_user !
     if !(user_signed_in? && current_user.admin?)
       redirect_to posts_path
     end

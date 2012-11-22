@@ -1,4 +1,10 @@
 Hackwarium::Application.routes.draw do
+  get "admin/index"
+
+  get "admin/stats"
+
+  get "admin/users"
+
  resources :posts do
     member do
       post :mark_sticky
@@ -37,7 +43,7 @@ put "settings/account" => "settings#account"
 
 
 # Admin View
-get "admin" => "settings#admin_panel"
+get "admin" => "admin#index"
   
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

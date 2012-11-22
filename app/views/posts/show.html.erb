@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 <div style="float: right; width: 700;">
   <%= link_to 'האקווריום', posts_path %>  >> <%= @post.title %>
-</div> <BR><br>
+</div>
+<br /><br />
 
 <div id="viewpost">
   <% if user_signed_in? && object_creator_or_admin(@post) %>
@@ -31,17 +32,16 @@
     </div>
 </div>
 
+
 <%= render 'leftside_post' %>
 <div id="comments-wrapper">
   <h2>תגובות</h2>
-    <%= render :partial => 'comments/comment', :collection => @post.comments %>
-    <br><br>
+    <%= render :partial => 'comments/comment', :collection => @post.comments %>    
     <%= render :partial => 'comments/comment_form', :object => @post %>
 </div>
+
+
 <% content_for :head do %>
-  <%= tag :meta, property: "fb:app_id", content: "167893606688878" %>
-  <%= tag :meta, property: "og:site_name", content: "האקווריום - ארדואינו ישראל" %>
-  <%= tag :meta, property: "og:type", content: "hackwarium:post" %>
   <%= tag :meta, property: "og:title", content: @post.title %>
   <%= tag :meta, property: "og:url", content: post_path(@post) %>
 <% end %>
