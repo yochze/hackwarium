@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
       # @comment = @post.comments.find(params[:post_id])
       if user_signed_in? && current_user != post.user
         current_user.vote_for(post)
-        post.user.positive_rank += 1
+        post.user.positive_rank += 20
         post.user.save
         redirect_to post
       else
@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
       
       if user_signed_in? && current_user != post.user
         current_user.vote_against(post)
-        post.user.negative_rank += 1
+        post.user.negative_rank += 10
         post.user.save
         redirect_to post
       else

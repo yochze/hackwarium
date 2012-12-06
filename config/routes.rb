@@ -1,9 +1,4 @@
 Hackwarium::Application.routes.draw do
-  get "admin/index"
-
-  get "admin/stats"
-
-  get "admin/users"
 
  resources :posts do
     member do

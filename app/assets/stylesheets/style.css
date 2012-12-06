@@ -7,9 +7,7 @@ body {
 h2 {
 	font: 12pt arial;
 	color: #03787f;
-	font-weight: bold;
-
-}
+	font-weight: bold; }
 
 a {
 	color: black;
@@ -146,20 +144,20 @@ h4 {
 }
 
 #form_user_update {
-	width: 500px;
+	width: 400px;
 	margin-left: auto;
 	margin-right: auto;}
 
-#form_user_update input {
-	float: right;
+#form_user_update .textbox {
+	float: left;
+	width: 225px;
+	display: block;
 }
 #form_user_update label {
 	display:block;
 	font-weight:bold;
-	text-align:right;
-	width:12	0px;
+	width:100px;
 	float:right;
-	margin-left: 30px;
 	color: #03787f;
 }
 

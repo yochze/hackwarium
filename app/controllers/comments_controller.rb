@@ -35,7 +35,7 @@ end
       @comment = @post.comments.find(params[:post_id])
       if user_signed_in? && current_user != @comment.user
         current_user.vote_for(@comment)
-        @comment.user.positive_rank += 1
+        @comment.user.positive_rank += 10
         @comment.user.save
         redirect_to @post
       else
@@ -52,7 +52,7 @@ end
       @comment = @post.comments.find(params[:post_id])
       if user_signed_in? && current_user != @comment.user
         current_user.vote_against(@comment)
-        @comment.user.negative_rank += 1
+        @comment.user.negative_rank += 5
         @comment.user.save
         redirect_to @post
       else
