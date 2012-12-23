@@ -1,6 +1,6 @@
 	<div id="comment" style="border-top: solid 1px #eee;"> 
 		<% if user_signed_in? %>
-		<%= form_for([@post, @post.comments.build], :remote => true) do |f| %>
+                  <%= form_for([@post, @post.comments.build], :remote => false) do |f| %>
 		    <%= f.text_area :content, :class => "textareacomment" %>
 		    <%= f.submit :value => 'שלח', :class => 'btn-send' %>
 		<% end %>
